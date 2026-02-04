@@ -14,7 +14,10 @@ class BookManangement:
         id = input("Enter Book's ID : ")
         author = input("Enter Book's Author : ")
         book = BookData(name, id, author)
+        self.library.append(book)
+    
         
 
 
 # viet tiep
+
