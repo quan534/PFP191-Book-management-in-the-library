@@ -16,8 +16,16 @@ class BookManangement:
         book = BookData(name, id, author)
         self.library.append(book)
     
+    def displayBook(self):
+        for e in self.library:
+            print(e.name, " | ", e.id ," | ", e.author)
+            print()
         
 
 
-# viet tiep
 
+
+library=BookManangement()
+library.library=[BookData("book1", "ID1", "author1"),BookData("book2", "ID2", "author2"),BookData("book3", "ID3", "author3")]
+
+library.displayBook()
