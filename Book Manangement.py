@@ -23,6 +23,11 @@ class BookManangement:
     def display_booklist(self):
         pass
     def search_for_book(self):
+        InputID = input('Nhập ID sách: ')
+        for n in self.library:
+            if n[1] == InputID:
+                print(n.name, " | ", n.id ," | ", n.author)
+
         pass
     def edit_book_information(self):
         pass
