@@ -13,4 +13,6 @@ class BookManangement:
         name = input("Enter Book's name : ")
         id = input("Enter Book's ID : ")
         author = input("Enter Book's Author : ")
-        book = BookData()
+        book = BookData(name, id, author)
+        
+
