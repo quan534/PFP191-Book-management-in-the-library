@@ -17,7 +17,7 @@ class BookManangement:
         id = input("Enter Book's ID : ")
         author = input("Enter Book's Author : ")
         quanity = int(input("Enter the number of books : ")
-        book = Book(name, id, author,quanity)
+        book = Book(name, id, author,quantity)
         self.library.append(book)
         
     def displayBook(self):
@@ -43,6 +43,15 @@ class BookManangement:
             if book.id == removed_ID:
                 self.library.remove(book)
                 break
+    def borrow(self):
+        self.borrow_count = 0
+        if self.quantity = 0:
+            raise ValueError('This book is currently not available')
+        self.quantity -= 1
+        self.borrow_count += 1
+        
+    def return_book(self):
+        self.quantity +=1
 
     def find_book_by_id(self, id):
         for book in self.library:
@@ -54,13 +63,10 @@ class BookManangement:
         if book is None:
             print('Book not found')
             return
-        try:
-            book.borrow()
-            print('Borrow successfully')
-            print(book)
-        except ValueError as e:
-            print(e)
-        pass
+        book.borrow()
+        print('Borrow successfully')
+        print(book)
+        
     def return_book(self):
         pass
     def view_borrowed_book(self):
@@ -75,6 +81,7 @@ library=BookManangement()
 library.library=[Book("book1", "ID1", "author1"),Book("book2", "ID2", "author2"),Book("book3", "ID3", "author3")]
 
 library.displayBook()
+
 
 
 
