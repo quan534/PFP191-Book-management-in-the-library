@@ -73,6 +73,36 @@ class BookManangement:
     def view_borrowed_book(self):
         pass
         
+def menu():
+    print("==========Quản lý thư viện==========")
+    print("0. Thoát chương trình")
+    print("1. Thêm sách vào thư viện")
+    print("2. Hiện thông tin cuốn sách hiện cần")
+    print("3. Hiện danh sách các sách thư viện hiện có")
+    print("4. Điều chỉnh thông tin sách")
+    print("5. Xóa sách")
+    print("6. Mượn sách")
+    print("7. Trả sách")
+
+library = BookManangement()
+
+while True:
+    menu()
+    choice = input("Chọn thao tác mà bạn muốn thực hiện")
+    if choice == "0":
+        break
+    elif choice == "1":
+        library.addBook()
+    elif choice == "2":
+        pass
+    elif choice == "3":
+        pass
+    elif choice == "4":
+        pass
+    elif choice == "5":
+        library.delete_book()
+    elif choice == "6":
+        pass
 library=BookManangement()
 
 library.library = [
@@ -103,5 +133,6 @@ library.display_booklist()
 
 while True:
     print(library.find_book_by_id(input()).__str__())
+
 
 
