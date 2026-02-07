@@ -4,21 +4,9 @@ class Book:
         self.id = id
         self.author = author
         self.quantity = quantity
-        self.borrow_count = 0
+        self.borrow_count = 0   
     def information(self):
-        return f"Book's name : {self.name}, ID : {self.id}, Author : {self.author}"
-
-    def is_available(self):
-        return self.quantity>0
-
-    def borrow(self):
-        if not self.is_available():
-            raise ValueError('This book is currently not available')
-        self.quantity -= 1
-        self.borrow_count += 1
-
-    def return_book(self):
-        self.quantity +=1
+        return f"Book's name : {self.name}, ID : {self.id}, Author : {self.author}, Quantity : {self.quantity}"
 
 class BookManangement:
     def __init__(self):
@@ -30,14 +18,19 @@ class BookManangement:
         author = input("Enter Book's Author : ")
         book = Book(name, id, author)
         self.library.append(book)
+
  #cho nay neu nhu k co sach thi co display gi ko ong   
-    def displayBook(self):
-        for e in self.library:
-            print(e.name, " | ", e.id ," | ", e.author)
+    def displayBook(self,book_id):
+        book=self.find_book_by_id(book_id)
+        if book == None:
+            print("book not found!")
+        else:
+            book.information()
 
    
     def display_booklist(self):
-        pass
+        for e in self.library:
+            print(e.name, " | ", e.id ," | ", e.author," | " , e.quantity)
         
     def search_for_book(self):
         InputID = input('Nhập ID sách: ')
@@ -82,8 +75,8 @@ class BookManangement:
 
 
 library=BookManangement()
-library.library=[Book("book1", "ID1", "author1"),Book("book2", "ID2", "author2"),Book("book3", "ID3", "author3")]
+library.library=[Book("book1", "ID1", "author1",1),Book("book2", "ID2", "author2",2),Book("book3", "ID3", "author3",3)]
 
-library.displayBook()
+library.display_booklist()
 
 
