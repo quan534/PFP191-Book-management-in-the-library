@@ -1,24 +1,12 @@
 class Book:
-    def __init__(self, name, id, author, quantity):
+    def __init__(self, name, id, author, quantity,borrow_ccount):
         self.name = name
         self.id = id
         self.author = author
         self.quantity = quantity
-        self.borrow_count = 0
-    def information(self):
+        self.borrow_count = borrow_count
+    def __str__(self):
         return f"Book's name : {self.name}, ID : {self.id}, Author : {self.author}"
-
-    def is_available(self):
-        return self.quantity>0
-
-    def borrow(self):
-        if not self.is_available():
-            raise ValueError('This book is currently not available')
-        self.quantity -= 1
-        self.borrow_count += 1
-
-    def return_book(self):
-        self.quantity +=1
 
 class BookManangement:
     def __init__(self):
@@ -85,5 +73,6 @@ library=BookManangement()
 library.library=[Book("book1", "ID1", "author1"),Book("book2", "ID2", "author2"),Book("book3", "ID3", "author3")]
 
 library.displayBook()
+
 
 
