@@ -6,7 +6,7 @@ class Book:
         self.quantity = quantity
 
     def __str__(self):
-        return f"Book's name : {self.name}, ID : {self.id}, Author : {self.author}"
+        return f"Book's name : {self.name}, ID : {self.id}, Author : {self.author}, Quanity : {self.quanity}"
 
 class BookManangement:
     def __init__(self):
@@ -19,7 +19,7 @@ class BookManangement:
         quanity = int(input("Enter the number of books : ")
         book = Book(name, id, author,quanity)
         self.library.append(book)
- #cho nay neu nhu k co sach thi co display gi ko ong   
+        
     def displayBook(self):
         for e in self.library:
             print(e.name, " | ", e.id ," | ", e.author)
@@ -42,6 +42,7 @@ class BookManangement:
         for book in self.library:
             if book.id == removed_ID:
                 self.library.remove(book)
+                break
 
     def find_book_by_id(self, id):
         for book in self.library:
@@ -74,6 +75,7 @@ library=BookManangement()
 library.library=[Book("book1", "ID1", "author1"),Book("book2", "ID2", "author2"),Book("book3", "ID3", "author3")]
 
 library.displayBook()
+
 
 
 
