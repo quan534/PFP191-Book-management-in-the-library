@@ -4,7 +4,7 @@ class Book:
         self.id = id
         self.author = author
         self.quantity = quantity
-        self.borrow_count = 0   
+ 
     def information(self):
         return f"Book's name : {self.name}, ID : {self.id}, Author : {self.author}, Quantity : {self.quantity}"
 
