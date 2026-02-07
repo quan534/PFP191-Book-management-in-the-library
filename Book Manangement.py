@@ -1,10 +1,10 @@
 class Book:
-    def __init__(self, name, id, author, quantity,borrow_ccount):
+    def __init__(self, name, id, author, quantity):
         self.name = name
         self.id = id
         self.author = author
         self.quantity = quantity
-        self.borrow_count = borrow_count
+
     def __str__(self):
         return f"Book's name : {self.name}, ID : {self.id}, Author : {self.author}"
 
@@ -16,7 +16,8 @@ class BookManangement:
         name = input("Enter Book's name : ")
         id = input("Enter Book's ID : ")
         author = input("Enter Book's Author : ")
-        book = Book(name, id, author)
+        quanity = int(input("Enter the number of books : ")
+        book = Book(name, id, author,quanity)
         self.library.append(book)
  #cho nay neu nhu k co sach thi co display gi ko ong   
     def displayBook(self):
@@ -25,7 +26,7 @@ class BookManangement:
 
    
     def display_booklist(self):
-        pass
+        
         
     def search_for_book(self):
         InputID = input('Nhập ID sách: ')
@@ -73,6 +74,7 @@ library=BookManangement()
 library.library=[Book("book1", "ID1", "author1"),Book("book2", "ID2", "author2"),Book("book3", "ID3", "author3")]
 
 library.displayBook()
+
 
 
 
