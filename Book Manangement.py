@@ -34,9 +34,9 @@ class BookManangement:
         
                 
     def search_for_book(self):
-        InputID = input('Nhập ID sách: ')
+        Name = input('Nhập tên sách: ')
         for n in self.library:
-            if n[1] == InputID:
+            if n.name == Name:
                 print(n.name, " | ", n.id ," | ", n.author)
                 
     def edit_book_information(self):
