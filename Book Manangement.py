@@ -94,7 +94,7 @@ while True:
     elif choice == "1":
         library.addBook()
     elif choice == "2":
-        pass
+        library.search_for_book()
     elif choice == "3":
         pass
     elif choice == "4":
