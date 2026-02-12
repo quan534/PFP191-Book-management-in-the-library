@@ -7,7 +7,7 @@ class Book:
         self.category=category
  
     def __str__(self):
-        return f"Book's name : {self.name}, ID : {self.id}, Author : {self.author}"
+        return f"Book's name : {self.name}, ID : {self.id}, Author : {self.author}, Quantity : {self.quantity}, Category : {self.category}"
 
 class BookManangement:
     def __init__(self):
