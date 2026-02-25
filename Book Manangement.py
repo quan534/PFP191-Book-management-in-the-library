@@ -14,6 +14,7 @@ class Book:
 
     def return_book(self):
         self.quantity += 1
+        self.borrow_count -= 1
  
     def __str__(self):
         return f"Book's name : {self.name}, ID : {self.id}, Author : {self.author}, Quantity : {self.quantity}, Category : {self.category}, Borrowed : {self.borrow_count}"
@@ -149,6 +150,7 @@ while True:
 
 # while True:
 #     print(library.find_book_by_id(input()).__str__())
+
 
 
 
