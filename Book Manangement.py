@@ -31,6 +31,7 @@ class BookManangement:
         print("----------------------------------------------------------------------------------------------------------------")
         for e in self.library:
             print(e.name. ljust(35), " | ", e.id.ljust(5) ," | ", e.author.ljust(20)," | " , str(e.quantity).ljust(8), " | ", e.category)
+        print() 
         
                 
     def search_for_book(self):
@@ -83,27 +84,9 @@ def menu():
     print("5. Xóa sách")
     print("6. Mượn sách")
     print("7. Trả sách")
+    print() 
 
 library = BookManangement()
-
-while True:
-    menu()
-    choice = input("Chọn thao tác mà bạn muốn thực hiện")
-    if choice == "0":
-        break
-    elif choice == "1":
-        library.addBook()
-    elif choice == "2":
-        library.search_for_book()
-    elif choice == "3":
-        pass
-    elif choice == "4":
-        pass
-    elif choice == "5":
-        library.delete_book()
-    elif choice == "6":
-        pass
-library=BookManangement()
 
 library.library = [
     Book("Dế Mèn Phiêu Lưu Ký", "1", "Tô Hoài", 5, "Thiếu nhi"),
@@ -128,11 +111,35 @@ library.library = [
     Book("Bến Không Chồng", "20", "Dương Hướng", 3, "Tiểu thuyết")
 ]
 
-
-library.display_booklist()
-
 while True:
-    print(library.find_book_by_id(input()).__str__())
+    menu()
+    choice = input("Chọn thao tác mà bạn muốn thực hiện: ")
+    print() 
+    if choice == "0":
+        break
+    elif choice == "1":
+        library.addBook()
+    elif choice == "2":
+        library.search_for_book()
+    elif choice == "3":
+        library.display_booklist()
+    elif choice == "4":
+        pass
+    elif choice == "5":
+        library.delete_book()
+    elif choice == "6":
+        pass
+    elif choice == "7":
+        pass
+
+
+
+
+
+# library.display_booklist()
+
+# while True:
+#     print(library.find_book_by_id(input()).__str__())
 
 
 
