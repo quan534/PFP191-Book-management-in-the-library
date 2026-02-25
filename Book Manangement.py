@@ -5,16 +5,18 @@ class Book:
         self.author = author
         self.quantity = quantity
         self.category=category
+        self.borrow_count = 0
     def borrow(self):
         if self.quantity <= 0:
             raise ValueError("Sách đã hết, không thể mượn.")
         self.quantity -= 1
+        self.borrow_count += 1
 
     def return_book(self):
         self.quantity += 1
  
     def __str__(self):
-        return f"Book's name : {self.name}, ID : {self.id}, Author : {self.author}, Quantity : {self.quantity}, Category : {self.category}"
+        return f"Book's name : {self.name}, ID : {self.id}, Author : {self.author}, Quantity : {self.quantity}, Category : {self.category}, Borrowed : {self.borrow_count}"
 
 class BookManangement:
     def __init__(self):
@@ -147,6 +149,7 @@ while True:
 
 # while True:
 #     print(library.find_book_by_id(input()).__str__())
+
 
 
 
