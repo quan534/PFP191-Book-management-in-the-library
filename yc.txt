@@ -1,0 +1,28 @@
+The basic functions:
+
+1. Book Data Management
+• Add new book
+• Display book list
+• Search for books
+• Edit book information
+• Delete a book
+
+2. Borrowing and Returning
+• Borrow a book
+• Return a book
+• View borrowed book list
+
+3. Statistics and Reports
+• Books by category
+• Most borrowed books
+
+4. File Handling
+• Save data to file
+• Load data from file
+
+5. Object-Oriented Programming
+• Use Book and LibraryManager classes
+• Apply constructors and encapsulation
+• Implement __str__() method
+• Use @property for data access
+• Handle exceptions for invalid input and file errors
