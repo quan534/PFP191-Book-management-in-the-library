@@ -9,8 +9,9 @@ class Book:
     def borrow(self):
         if self.quantity <= 0:
             raise ValueError("Sách đã hết, không thể mượn.")
-        self.quantity -= 1
-        self.borrow_count += 1
+        else: 
+            self.quantity -= 1
+            self.borrow_count += 1
 
     def return_book(self):
         self.quantity += 1
@@ -150,6 +151,7 @@ while True:
 
 # while True:
 #     print(library.find_book_by_id(input()).__str__())
+
 
 
 
