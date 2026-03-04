@@ -8,12 +8,15 @@ class Book:
         self.borrow_count = 0
     def borrow(self):
         if self.quantity <= 0:
+            # cái này tui nghĩ dùng print lỗi được rồi
             raise ValueError("Sách đã hết, không thể mượn.")
-        self.quantity -= 1
-        self.borrow_count += 1
+        else: 
+            self.quantity -= 1
+            self.borrow_count += 1
 
     def return_book(self):
         self.quantity += 1
+        self.borrow_count -= 1
  
     def __str__(self):
         return f"Book's name : {self.name}, ID : {self.id}, Author : {self.author}, Quantity : {self.quantity}, Category : {self.category}, Borrowed : {self.borrow_count}"
@@ -156,6 +159,8 @@ while True:
 
 # while True:
 #     print(library.find_book_by_id(input()).__str__())
+
+
 
 
 
