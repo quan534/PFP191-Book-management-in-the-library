@@ -1,11 +1,11 @@
 class Book:
-    def __init__(self, name, id, author, quantity, category):
+    def __init__(self, name, id, author, quantity, category, borrow_count=0):
         self.name = name
         self.id = id
         self.author = author
         self.quantity = quantity
         self.category=category
-        self.borrow_count = 0
+        self.borrow_count = borrow_count
     def borrow(self):
         if self.quantity <= 0:
             # cái này tui nghĩ dùng print lỗi được rồi
@@ -82,6 +82,16 @@ class BookManangement:
         pass
 
     def return_book(self):
+                book = self.find_book_by_id(id)
+        if book is None:
+            print('Book not found')
+            return
+        try:
+            book.return_book()
+            print('Borrow successfully')
+            print(book)
+        except ValueError as e:
+            print(e)
         pass
     
     def view_borrowed_book(self):
