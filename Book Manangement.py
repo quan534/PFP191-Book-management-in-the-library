@@ -60,6 +60,7 @@ class BookManangement:
         for book in self.library:
             if book.id == removed_ID:
                 self.library.remove(book)
+                print("Book removed!\n") 
 
     def find_book_by_id(self, id):
         for book in self.library:
