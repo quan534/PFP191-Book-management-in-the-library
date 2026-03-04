@@ -52,15 +52,8 @@ class BookManangement:
             if n.name == Name:
                 print(n.name, " | ", n.id ," | ", n.author)
                 
-    def edit_book_information(self, book_id, **kwargs):
-        book = self.find_book_by_id(book_id)
-        if book is None:
-            print("Book not found")
-            return
-    
-        for key, value in kwargs.items():
-            setattr(book, key, value)
-
+    def edit_book_information(self):
+        pass
         
     def delete_book(self):
         removed_ID = input("Enter the removed book's ID : ")
@@ -89,7 +82,7 @@ class BookManangement:
         pass
 
     def return_book(self):
-                book = self.find_book_by_id(id)
+        book = self.find_book_by_id(id)
         if book is None:
             print('Book not found')
             return
