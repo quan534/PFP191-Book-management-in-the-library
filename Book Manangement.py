@@ -8,6 +8,7 @@ class Book:
         self.borrow_count = 0
     def borrow(self):
         if self.quantity <= 0:
+            # cái này tui nghĩ dùng print lỗi được rồi
             raise ValueError("Sách đã hết, không thể mượn.")
         else: 
             self.quantity -= 1
