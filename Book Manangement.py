@@ -15,6 +15,8 @@ class Book:
             self.borrow_count += 1
 
     def return_book(self):
+        if self.borrow_count <= 0:
+            raise ValueError("Không có sách nào đang được mượn.")
         self.quantity += 1
         self.borrow_count -= 1
  
@@ -39,14 +41,34 @@ class BookManangement:
         self.library.append(book)
         print("book added!\n")
 
+    def importData(self, file_location, method):
+        file=open(file_location, "r", encoding="utf-8")
+        if method == "2":
+            self.library=[]
+            for line in file:   
+                name, id, author, quantity, category, borrow = line.strip().split(",")
+                book = Book(name, id, author, int(quantity), category, int(borrow))
+                self.library.append(book)    
+            print("Data imported!\n") 
+            return
+            
+
+
+        for line in file:   
+            name, id, author, quantity, category, borrow = line.strip().split(",")
+            for book in self.library:
+                if book.id != id:
+                    book = Book(name, id, author, int(quantity), category, int(borrow))
+            self.library.append(book)
+        print("Data imported!\n") 
  #cho nay neu nhu k co sach thi co display gi ko ong 
 # tui sửa rồi nha ô  
    
     def display_booklist(self):
-        print("Name".ljust(35), " | ", "Id".ljust(5), " | ", "Author".ljust(20), " | ", "Quantity".ljust(8), " | ", "Category" )
-        print("----------------------------------------------------------------------------------------------------------------")
+        print("Name".ljust(35), " | ", "Id".ljust(5), " | ", "Author".ljust(20), " | ", "Quantity".ljust(8), " | ", "Category".ljust(20)," | ", "Borrowed".ljust(8))
+        print("-------------------------------------------------------------------------------------------------------------------------------")
         for e in self.library:
-            print(e.name. ljust(35), " | ", e.id.ljust(5) ," | ", e.author.ljust(20)," | " , str(e.quantity).ljust(8), " | ", e.category)
+            print(e.name. ljust(35), " | ", e.id.ljust(5) ," | ", e.author.ljust(20)," | " , str(e.quantity).ljust(8), " | ", e.category.ljust(20), " | ", str(e.borrow_count).ljust(8))
         print() 
         
                 
@@ -65,6 +87,8 @@ class BookManangement:
             if book.id == removed_ID:
                 self.library.remove(book)
                 print("Book removed!\n") 
+                return
+        print("Book not found\n")
 
     def find_book_by_id(self, id):
         for book in self.library:
@@ -75,31 +99,50 @@ class BookManangement:
     def borrow_book(self,id):
         book = self.find_book_by_id(id)
         if book is None:
-            print('Book not found')
+            print('Book not found\n')
             return
         try:
             book.borrow()
             print('Borrow successfully')
             print(book)
+            print() 
         except ValueError as e:
             print(e)
+            print() 
         pass
 
-    def return_book(self):
+    def return_book(self,id):
         book = self.find_book_by_id(id)
         if book is None:
-            print('Book not found')
+            print('Book not found\n')
             return
         try:
             book.return_book()
-            print('Borrow successfully')
+            print('Return successfully')
             print(book)
+            print() 
         except ValueError as e:
             print(e)
+            print() 
         pass
     
-    def view_borrowed_book(self):
-        pass
+    def most_borrow_book(self):
+        list_borrow_count = []
+        for book in self.library:
+            list_borrow_count.append(book.borrow_count)
+        max_borrow_count = max(list_borrow_count)
+        if max_borrow_count == 0:
+            print("Khong co quyen sach nao duoc muon")
+            print()
+            return
+
+        print("Cac quyen sach duoc muon nhieu nhat la")
+        print() 
+        for book in self.library:
+            if book.borrow_count == max_borrow_count:
+                print(book.name)
+                print("Số sách đã mượn :",book.borrow_count)
+                print()
         
 def menu():
     print("==========Quản lý thư viện==========")
@@ -111,6 +154,9 @@ def menu():
     print("5. Xóa sách")
     print("6. Mượn sách")
     print("7. Trả sách")
+    print("8. Nhập dữ liệu từ file")
+    print("9. Lưu dữ liệu ra file")
+    print("10. Tìm sách được mượn nhiều nhất")
     print() 
 
 library = BookManangement()
@@ -160,7 +206,14 @@ while True:
     elif choice == "7":
         id = input('Nhập ID sách bạn muốn trả: ')
         library.return_book(id)
-
+    elif choice == "8":
+        filename = input("Nhập tên file dữ liệu: ")
+        method = input("Type: 1.Append 2.Overwrite : ")
+        library.importData(filename, method)
+    elif choice == "9":
+        pass
+    elif choice == "10":
+        library.most_borrow_book()
 
 
 

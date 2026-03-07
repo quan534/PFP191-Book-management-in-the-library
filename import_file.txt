@@ -1,4 +1,4 @@
-Dế Mèn Phiêu Lưu Ký,BV001,Tô Hoài,12,Thiếu nhi,3
+Dế Mèn Phiêu Lưu Ký,BV001,Tô Hoài,111111111,Thiếu nhi,333
 Tuổi Thơ Dữ Dội,BV002,Phùng Quán,7,Tiểu thuyết,2
 Số Đỏ,BV003,Vũ Trọng Phụng,5,Văn học,1
 Chí Phèo,BV004,Nam Cao,6,Văn học,4
