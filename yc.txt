@@ -4,7 +4,7 @@ The basic functions:
   Add new book (DONE) 
   Display book list (DONE) 
   Search for books (DONE)
-  Edit book information 
+  Edit book information (DONE)
   Delete a book (DONE)
 
 2. Borrowing and Returning
@@ -14,7 +14,7 @@ The basic functions:
 
 3. Statistics and Reports
   Books by category
-  Most borrowed books
+  Most borrowed books (DONE)
 
 4. File Handling
   Save data to file
