@@ -1,11 +1,11 @@
 class Book:
-    def __init__(self, name, id, author, quantity, category):
+    def __init__(self, name, id, author, quantity, category, borrow_count=0):
         self.name = name
         self.id = id
         self.author = author
         self.quantity = quantity
         self.category=category
-        self.borrow_count = 0
+        self.borrow_count = borrow_count
     def borrow(self):
         if self.quantity <= 0:
             # cái này tui nghĩ dùng print lỗi được rồi
@@ -25,6 +25,10 @@ class BookManangement:
     def __init__(self):
         self.library = []
         
+    def loadData(file_location):
+        # import data from file_location
+        pass
+
     def addBook(self):
         name = input("Enter Book's name : ")
         id = input("Enter Book's ID : ")
@@ -33,7 +37,7 @@ class BookManangement:
         category = input("Enter Book's category: ")
         book = Book(name, id, author,quantity,category)
         self.library.append(book)
-        print("book added!")
+        print("book added!\n")
 
  #cho nay neu nhu k co sach thi co display gi ko ong 
 # tui sửa rồi nha ô  
@@ -50,8 +54,9 @@ class BookManangement:
         Name = input('Nhập tên sách: ')
         for n in self.library:
             if n.name == Name:
-                print(n.name, " | ", n.id ," | ", n.author)
+                print(n.name, " | ID: ", n.id ," | Tác giả: ", n.author,"\n")
                 
+<<<<<<< HEAD
     def edit_book_information(self, book_id, **kwargs):
         book = self.find_book_by_id(book_id)
         if book is None:
@@ -59,14 +64,25 @@ class BookManangement:
             return
     
         for key, value in kwargs.items():
-            setattr(book, key, value)
+            if hasattr(book, key):
+                setattr(book, key, value)
+        else:
+            print(f"{key} is not a valid attribute")
 
+    print("Book information updated successfully")
+    print(book)
+
+=======
+    def edit_book_information(self):
+        pass
+>>>>>>> 85cdd8e46217a4e7e4f84436ccc52a8fc60d2f4c
         
     def delete_book(self):
         removed_ID = input("Enter the removed book's ID : ")
         for book in self.library:
             if book.id == removed_ID:
                 self.library.remove(book)
+                print("Book removed!\n") 
 
     def find_book_by_id(self, id):
         for book in self.library:
@@ -88,6 +104,16 @@ class BookManangement:
         pass
 
     def return_book(self):
+        book = self.find_book_by_id(id)
+        if book is None:
+            print('Book not found')
+            return
+        try:
+            book.return_book()
+            print('Borrow successfully')
+            print(book)
+        except ValueError as e:
+            print(e)
         pass
     
     def view_borrowed_book(self):
@@ -147,9 +173,11 @@ while True:
     elif choice == "5":
         library.delete_book()
     elif choice == "6":
-        pass
+        id = input('Nhập ID sách bạn muốn mượn: ')
+        library.borrow_book(id)
     elif choice == "7":
-        pass
+        id = input('Nhập ID sách bạn muốn trả: ')
+        library.return_book(id)
 
 
 
@@ -159,6 +187,7 @@ while True:
 
 # while True:
 #     print(library.find_book_by_id(input()).__str__())
+
 
 
 
