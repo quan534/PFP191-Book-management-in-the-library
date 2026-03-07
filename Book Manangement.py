@@ -78,8 +78,36 @@ class BookManangement:
             if n.name == Name:
                 print(n.name, " | ID: ", n.id ," | Tác giả: ", n.author,"\n")
                 
+                
     def edit_book_information(self):
-        pass
+        book_id = input("Enter book ID to edit: ")
+        book = self.find_book_by_id(book_id)
+
+        if book is None:
+            print("Book not found\n")
+            return
+
+        print("Leave blank if you don't want to change the information")
+
+        new_name = input("New name: ")
+        new_author = input("New author: ")
+        new_quantity = input("New quantity: ")
+        new_category = input("New category: ")
+
+        if new_name != "":
+            book.name = new_name
+        if new_author != "":
+            book.author = new_author
+        if new_quantity != "":
+            book.quantity = int(new_quantity)
+        if new_category != "":
+            book.category = new_category
+
+        print("Book information updated successfully!\n")
+        print(book)
+
+
+
         
     def delete_book(self):
         removed_ID = input("Enter the removed book's ID : ")
@@ -197,7 +225,7 @@ while True:
     elif choice == "3":
         library.display_booklist()
     elif choice == "4":
-        pass
+        library.edit_book_information()
     elif choice == "5":
         library.delete_book()
     elif choice == "6":
