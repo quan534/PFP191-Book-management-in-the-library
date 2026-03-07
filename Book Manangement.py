@@ -25,6 +25,10 @@ class BookManangement:
     def __init__(self):
         self.library = []
         
+    def loadData(file_location):
+        # import data from file_location
+        pass
+
     def addBook(self):
         name = input("Enter Book's name : ")
         id = input("Enter Book's ID : ")
@@ -33,7 +37,7 @@ class BookManangement:
         category = input("Enter Book's category: ")
         book = Book(name, id, author,quantity,category)
         self.library.append(book)
-        print("book added!")
+        print("book added!\n")
 
  #cho nay neu nhu k co sach thi co display gi ko ong 
 # tui sửa rồi nha ô  
@@ -50,7 +54,7 @@ class BookManangement:
         Name = input('Nhập tên sách: ')
         for n in self.library:
             if n.name == Name:
-                print(n.name, " | ", n.id ," | ", n.author)
+                print(n.name, " | ID: ", n.id ," | Tác giả: ", n.author,"\n")
                 
     def edit_book_information(self):
         pass
