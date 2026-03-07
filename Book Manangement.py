@@ -8,7 +8,6 @@ class Book:
         self.borrow_count = borrow_count
     def borrow(self):
         if self.quantity <= 0:
-            # cái này tui nghĩ dùng print lỗi được rồi
             raise ValueError("Sách đã hết, không thể mượn.")
         else: 
             self.quantity -= 1
@@ -32,14 +31,27 @@ class BookManangement:
         pass
 
     def addBook(self):
-        name = input("Enter Book's name : ")
-        id = input("Enter Book's ID : ")
-        author = input("Enter Book's Author : ")
-        quantity = int(input("Enter the number of books : "))
-        category = input("Enter Book's category: ")
-        book = Book(name, id, author,quantity,category)
-        self.library.append(book)
-        print("book added!\n")
+            name = input("Enter Book's name : ")
+            id = input("Enter Book's ID : ")
+            author = input("Enter Book's Author : ")
+            quantityAdd = int(input("Enter the number of books : "))
+            category = input("Enter Book's category: ")
+            bookadd = Book(name, id, author,quantityAdd,category)
+            count = 0
+            currCount = 0
+            for book in self.library:
+                currCount += 1
+            for book in self.library:
+                count += 1
+                if book.name == bookadd.name:
+                    book.quantity += quantityAdd
+                    break
+                    
+            if count == currCount:
+                self.library.append(bookadd)
+
+
+            print("book added!\n")
 
     def importData(self, file_location, method):
         file=open(file_location, "r", encoding="utf-8")
@@ -53,13 +65,16 @@ class BookManangement:
             return
             
 
-
+        # nếu như có sách trùng thì phải update số lượng sách đó chứ không phải thêm sách mới vào thư viện
         for line in file:   
+            print("a") 
             name, id, author, quantity, category, borrow = line.strip().split(",")
-            for book in self.library:
-                if book.id != id:
+            for i, book in enumerate(self.library):
+                if book.id == id:
+                    self.library[i] = Book(name, id, author, int(quantity)+book.quantity, category, int(borrow)+book.borrow_count)
+                else:
                     book = Book(name, id, author, int(quantity), category, int(borrow))
-            self.library.append(book)
+                    self.library.append(book)
         print("Data imported!\n") 
  #cho nay neu nhu k co sach thi co display gi ko ong 
 # tui sửa rồi nha ô  
@@ -246,10 +261,7 @@ while True:
 
 
 
-# library.display_booklist()
 
-# while True:
-#     print(library.find_book_by_id(input()).__str__())
 
 
 
