@@ -154,6 +154,19 @@ class BookManangement:
             print() 
         pass
     
+    def books_by_category(self):
+        category = input("Enter category: ").strip()
+
+        found = False
+
+        for book in self.library:
+            if book.category.lower() == category.lower():
+                print(book)
+                found = True
+
+        if not found:
+            print("No books found in this category")
+    
     def most_borrow_book(self):
         list_borrow_count = []
         for book in self.library:
