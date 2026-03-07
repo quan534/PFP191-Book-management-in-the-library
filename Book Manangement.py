@@ -57,6 +57,7 @@ class BookManangement:
                 print(n.name, " | ID: ", n.id ," | Tác giả: ", n.author,"\n")
                 
 <<<<<<< HEAD
+<<<<<<< HEAD
     def edit_book_information(self, book_id, **kwargs):
         book = self.find_book_by_id(book_id)
         if book is None:
@@ -72,6 +73,10 @@ class BookManangement:
     print("Book information updated successfully")
     print(book)
 
+=======
+    def edit_book_information(self):
+        pass
+>>>>>>> 85cdd8e46217a4e7e4f84436ccc52a8fc60d2f4c
 =======
     def edit_book_information(self):
         pass
