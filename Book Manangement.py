@@ -56,31 +56,36 @@ class BookManangement:
             if n.name == Name:
                 print(n.name, " | ID: ", n.id ," | Tác giả: ", n.author,"\n")
                 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    def edit_book_information(self, book_id, **kwargs):
+                
+    def edit_book_information(self):
+        book_id = input("Enter book ID to edit: ")
         book = self.find_book_by_id(book_id)
+
         if book is None:
-            print("Book not found")
+            print("Book not found\n")
             return
-    
-        for key, value in kwargs.items():
-            if hasattr(book, key):
-                setattr(book, key, value)
-        else:
-            print(f"{key} is not a valid attribute")
 
-    print("Book information updated successfully")
-    print(book)
+        print("Leave blank if you don't want to change the information")
 
-=======
-    def edit_book_information(self):
-        pass
->>>>>>> 85cdd8e46217a4e7e4f84436ccc52a8fc60d2f4c
-=======
-    def edit_book_information(self):
-        pass
->>>>>>> 85cdd8e46217a4e7e4f84436ccc52a8fc60d2f4c
+        new_name = input("New name: ")
+        new_author = input("New author: ")
+        new_quantity = input("New quantity: ")
+        new_category = input("New category: ")
+
+        if new_name != "":
+            book.name = new_name
+        if new_author != "":
+            book.author = new_author
+        if new_quantity != "":
+            book.quantity = int(new_quantity)
+        if new_category != "":
+            book.category = new_category
+
+        print("Book information updated successfully!\n")
+        print(book)
+
+
+
         
     def delete_book(self):
         removed_ID = input("Enter the removed book's ID : ")
@@ -174,7 +179,7 @@ while True:
     elif choice == "3":
         library.display_booklist()
     elif choice == "4":
-        pass
+        library.edit_book_information()
     elif choice == "5":
         library.delete_book()
     elif choice == "6":
