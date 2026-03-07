@@ -154,18 +154,18 @@ class BookManangement:
             print() 
         pass
     def view_borrowed_book(self):
-    """Hiển thị các sách đang có người mượn (borrow_count > 0)"""
-    borrowed = [book for book in self.library if book.borrow_count > 0]
-    if not borrowed:
-        print("Hiện không có cuốn sách nào đang được mượn.")
-        return
+        """Hiển thị các sách đang có người mượn (borrow_count > 0)""" 
+        borrowed = [book for book in self.library if book.borrow_count > 0]
+        if not borrowed:
+            print("Hiện không có cuốn sách nào đang được mượn.")
+            return
 
-    print("\n=== DANH SÁCH SÁCH ĐANG ĐƯỢC MƯỢN ===")
-    print("Tên sách".ljust(35), " | ", "ID".ljust(5), " | ", "Tác giả".ljust(20), " | ", "Số lượng đang mượn")
-    print("-" * 85)
-    for book in borrowed:
-        print(book.name.ljust(35), " | ", book.id.ljust(5), " | ", book.author.ljust(20), " | ", str(book.borrow_count))
-    print()
+        print("\n=== DANH SÁCH SÁCH ĐANG ĐƯỢC MƯỢN ===")
+        print("Tên sách".ljust(35), " | ", "ID".ljust(5), " | ", "Tác giả".ljust(20), " | ", "Số lượng đang mượn")
+        print("-" * 85)
+        for book in borrowed:
+            print(book.name.ljust(35), " | ", book.id.ljust(5), " | ", book.author.ljust(20), " | ", str(book.borrow_count))
+        print()
     
     def books_by_category(self):
         category = input("Enter category: ").strip()
