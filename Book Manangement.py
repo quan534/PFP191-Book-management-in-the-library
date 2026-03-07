@@ -151,9 +151,11 @@ while True:
     elif choice == "5":
         library.delete_book()
     elif choice == "6":
-        pass
+        id = input('Nhập ID sách bạn muốn mượn: ')
+        library.borrow_book(id)
     elif choice == "7":
-        pass
+        id = input('Nhập ID sách bạn muốn trả: ')
+        library.return_book(id)
 
 
 
@@ -163,6 +165,7 @@ while True:
 
 # while True:
 #     print(library.find_book_by_id(input()).__str__())
+
 
 
 
