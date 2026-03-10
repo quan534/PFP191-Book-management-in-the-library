@@ -49,7 +49,7 @@ class BookManangement:
                     
             if count == currCount:
                 self.library.append(bookadd)
-
+                save_data(bookadd)
 
             print("book added!\n")
 
