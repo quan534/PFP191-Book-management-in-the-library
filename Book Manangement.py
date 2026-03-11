@@ -36,6 +36,7 @@ class BookManangement:
             author = input("Enter Book's Author : ")
             quantityAdd = int(input("Enter the number of books : "))
             category = input("Enter Book's category: ")
+            print("Book added!\n")
             bookadd = Book(name, id, author,quantityAdd,category)
             count = 0
             currCount = 0
@@ -45,13 +46,12 @@ class BookManangement:
                 count += 1
                 if book.name == bookadd.name:
                     book.quantity += quantityAdd
-                    break
+                    return
                     
             if count == currCount:
                 self.library.append(bookadd)
                 save_data(bookadd)
 
-            print("book added!\n")
 
     def importData(self, file_location, method):
         file=open(file_location, "r", encoding="utf-8")

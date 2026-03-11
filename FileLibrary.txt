@@ -18,3 +18,6 @@ Cánh Đồng Bất Tận,17,Nguyễn Ngọc Tư,4,Truyện ngắn
 Nỗi Buồn Chiến Tranh,18,Bảo Ninh,3,Tiểu thuyết
 Dòng Sông Ly Biệt,19,Nguyễn Mộng Giác,2,Tiểu thuyết
 Bến Không Chồng,20,Dương Hướng,3,Tiểu thuyết
+1,1,1,1,1
+2,2,2,2,2
+1,1,1,1,1
