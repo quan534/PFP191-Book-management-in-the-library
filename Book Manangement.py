@@ -213,9 +213,12 @@ class BookManangement:
                 print(book.name)
                 print("Số sách đã mượn :",book.borrow_count)
                 print()
-def save_data(info):
-    with open('FileLibrary.txt','a',encoding='UTF-8') as file:
-        file.write(f'\n{info.name},{info.id},{info.author},{info.quantity},{info.category}')
+    def save_data(self):
+        with open('FileLibrary.txt','w') as f:
+            f.close
+        for info in self.library:
+            with open('FileLibrary.txt','a',encoding='UTF-8') as file:
+                file.write(f'\n{info.name},{info.id},{info.author},{info.quantity},{info.category}')
         
 def menu():
     print("==========Quản lý thư viện==========")
