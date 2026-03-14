@@ -1,4 +1,3 @@
-
 Dế Mèn Phiêu Lưu Ký,1,Tô Hoài,5,Thiếu nhi
 Tuổi Thơ Dữ Dội,2,Phùng Quán,3,Thiếu nhi
 Lão Hạc,3,Nam Cao,4,Văn học Việt Nam
@@ -19,4 +18,3 @@ Cánh Đồng Bất Tận,17,Nguyễn Ngọc Tư,4,Truyện ngắn
 Nỗi Buồn Chiến Tranh,18,Bảo Ninh,3,Tiểu thuyết
 Dòng Sông Ly Biệt,19,Nguyễn Mộng Giác,2,Tiểu thuyết
 Bến Không Chồng,20,Dương Hướng,3,Tiểu thuyết
-111,111,111,111,111

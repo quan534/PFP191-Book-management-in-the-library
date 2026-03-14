@@ -57,8 +57,13 @@ class BookManangement:
         file=open(file_location, "r", encoding="utf-8")
         if method == "2":
             self.library=[]
-            for line in file:   
-                name, id, author, quantity, category, borrow = line.strip().split(",")
+            for line in file:  
+                line_data=line.strip().split(",")
+                name, id, author, quantity, category = line_data[:6]
+                if len(line_data)== 6:
+                    borrow=line_data
+                else:
+                    borrow=0
                 book = Book(name, id, author, int(quantity), category, int(borrow))
                 self.library.append(book)    
             print("Data imported!\n") 
@@ -67,8 +72,14 @@ class BookManangement:
 
         # nếu như có sách trùng thì phải update số lượng sách đó chứ không phải thêm sách mới vào thư viện
         for line in file:   
-            print("a") 
-            name, id, author, quantity, category, borrow = line.strip().split(",")
+
+            line_data=line.strip().split(",")
+            name, id, author, quantity, category = line_data[:6]
+            if len(line_data)== 6:
+                borrow=line_data
+            else:
+                borrow=0
+
             for i, book in enumerate(self.library):
                 if book.id == id:
                     self.library[i] = Book(name, id, author, int(quantity)+book.quantity, category, int(borrow)+book.borrow_count)
@@ -117,20 +128,17 @@ class BookManangement:
             book.quantity = int(new_quantity)
         if new_category != "":
             book.category = new_category
-
+        self.save_data()
         print("Book information updated successfully!\n")
         print(book)
-        
 
-
-
-        
     def delete_book(self):
         removed_ID = input("Enter the removed book's ID : ")
         for book in self.library:
             if book.id == removed_ID:
                 self.library.remove(book)
                 print("Book removed!\n") 
+                self.save_data()
                 return
         print("Book not found\n")
 
@@ -153,6 +161,7 @@ class BookManangement:
         except ValueError as e:
             print(e)
             print() 
+        self.save_data()
         pass
 
     def return_book(self,id):
@@ -167,7 +176,8 @@ class BookManangement:
             print() 
         except ValueError as e:
             print(e)
-            print() 
+            print()
+        self.save_data()
         pass
 
     def view_borrowed_book(self):
@@ -219,7 +229,7 @@ class BookManangement:
             f.close
         for info in self.library:
             with open('FileLibrary.txt','a',encoding='UTF-8') as file:
-                file.write(f'\n{info.name},{info.id},{info.author},{info.quantity},{info.category}')
+                file.write(f'{info.name},{info.id},{info.author},{info.quantity},{info.category}\n')
         
 def menu():
     print("==========Quản lý thư viện==========")
@@ -238,28 +248,30 @@ def menu():
 
 library = BookManangement()
 
-library.library = [
-    Book("Dế Mèn Phiêu Lưu Ký", "1", "Tô Hoài", 5, "Thiếu nhi"),
-    Book("Tuổi Thơ Dữ Dội", "2", "Phùng Quán", 3, "Thiếu nhi"),
-    Book("Lão Hạc", "3", "Nam Cao", 4, "Văn học Việt Nam"),
-    Book("Chí Phèo", "4", "Nam Cao", 6, "Văn học Việt Nam"),
-    Book("Tắt Đèn", "5", "Ngô Tất Tố", 2, "Văn học Việt Nam"),
-    Book("Vợ Nhặt", "6", "Kim Lân", 3, "Văn học Việt Nam"),
-    Book("Số Đỏ", "7", "Vũ Trọng Phụng", 5, "Tiểu thuyết"),
-    Book("Nhật Ký Trong Tù", "8", "Hồ Chí Minh", 4, "Thơ"),
-    Book("Rừng Xà Nu", "9", "Nguyễn Trung Thành", 6, "Văn học Việt Nam"),
-    Book("Đất Rừng Phương Nam", "10", "Đoàn Giỏi", 7, "Thiếu nhi"),
-    Book("Mắt Biếc", "11", "Nguyễn Nhật Ánh", 8, "Tiểu thuyết"),
-    Book("Cho Tôi Xin Một Vé Đi Tuổi Thơ", "12", "Nguyễn Nhật Ánh", 6, "Thiếu nhi"),
-    Book("Người Lái Đò Sông Đà", "13", "Nguyễn Tuân", 3, "Tùy bút"),
-    Book("Chiếc Thuyền Ngoài Xa", "14", "Nguyễn Minh Châu", 4, "Truyện ngắn"),
-    Book("Vợ Chồng A Phủ", "15", "Tô Hoài", 5, "Văn học Việt Nam"),
-    Book("Hai Đứa Trẻ", "16", "Thạch Lam", 2, "Truyện ngắn"),
-    Book("Cánh Đồng Bất Tận", "17", "Nguyễn Ngọc Tư", 4, "Truyện ngắn"),
-    Book("Nỗi Buồn Chiến Tranh", "18", "Bảo Ninh", 3, "Tiểu thuyết"),
-    Book("Dòng Sông Ly Biệt", "19", "Nguyễn Mộng Giác", 2, "Tiểu thuyết"),
-    Book("Bến Không Chồng", "20", "Dương Hướng", 3, "Tiểu thuyết")
-]
+# library.library = [
+#     Book("Dế Mèn Phiêu Lưu Ký", "1", "Tô Hoài", 5, "Thiếu nhi"),
+#     Book("Tuổi Thơ Dữ Dội", "2", "Phùng Quán", 3, "Thiếu nhi"),
+#     Book("Lão Hạc", "3", "Nam Cao", 4, "Văn học Việt Nam"),
+#     Book("Chí Phèo", "4", "Nam Cao", 6, "Văn học Việt Nam"),
+#     Book("Tắt Đèn", "5", "Ngô Tất Tố", 2, "Văn học Việt Nam"),
+#     Book("Vợ Nhặt", "6", "Kim Lân", 3, "Văn học Việt Nam"),
+#     Book("Số Đỏ", "7", "Vũ Trọng Phụng", 5, "Tiểu thuyết"),
+#     Book("Nhật Ký Trong Tù", "8", "Hồ Chí Minh", 4, "Thơ"),
+#     Book("Rừng Xà Nu", "9", "Nguyễn Trung Thành", 6, "Văn học Việt Nam"),
+#     Book("Đất Rừng Phương Nam", "10", "Đoàn Giỏi", 7, "Thiếu nhi"),
+#     Book("Mắt Biếc", "11", "Nguyễn Nhật Ánh", 8, "Tiểu thuyết"),
+#     Book("Cho Tôi Xin Một Vé Đi Tuổi Thơ", "12", "Nguyễn Nhật Ánh", 6, "Thiếu nhi"),
+#     Book("Người Lái Đò Sông Đà", "13", "Nguyễn Tuân", 3, "Tùy bút"),
+#     Book("Chiếc Thuyền Ngoài Xa", "14", "Nguyễn Minh Châu", 4, "Truyện ngắn"),
+#     Book("Vợ Chồng A Phủ", "15", "Tô Hoài", 5, "Văn học Việt Nam"),
+#     Book("Hai Đứa Trẻ", "16", "Thạch Lam", 2, "Truyện ngắn"),
+#     Book("Cánh Đồng Bất Tận", "17", "Nguyễn Ngọc Tư", 4, "Truyện ngắn"),
+#     Book("Nỗi Buồn Chiến Tranh", "18", "Bảo Ninh", 3, "Tiểu thuyết"),
+#     Book("Dòng Sông Ly Biệt", "19", "Nguyễn Mộng Giác", 2, "Tiểu thuyết"),
+#     Book("Bến Không Chồng", "20", "Dương Hướng", 3, "Tiểu thuyết")
+# ]
+
+library.importData("FileLibrary.txt","2")
 
 while True:
     menu()
@@ -288,8 +300,7 @@ while True:
         method = input("Type: 1.Append 2.Overwrite : ")
         library.importData(filename, method)
     elif choice == "9":
-        library.save_data()
-        print('1')
+        library.view_borrowed_book()
     elif choice == "10":
         library.most_borrow_book()
 
