@@ -50,7 +50,7 @@ class BookManangement:
                     
             if count == currCount:
                 self.library.append(bookadd)
-                save_data(bookadd)
+                self.save_data()
 
 
     def importData(self, file_location, method):
@@ -91,7 +91,7 @@ class BookManangement:
         Name = input('Nhập tên sách: ')
         for n in self.library:
             if n.name == Name:
-                print(n.name, " | ID: ", n.id ," | Tác giả: ", n.author,"\n")
+                print(print(n.name. ljust(35), " | ", n.id.ljust(5) ," | ", n.author.ljust(20)," | " , str(n.quantity).ljust(8), " | ", n.category.ljust(20), " | ", str(n.borrow_count).ljust(8)))
                 
                 
     def edit_book_information(self):
@@ -120,6 +120,7 @@ class BookManangement:
 
         print("Book information updated successfully!\n")
         print(book)
+        
 
 
 
