@@ -287,11 +287,10 @@ while True:
         method = input("Type: 1.Append 2.Overwrite : ")
         library.importData(filename, method)
     elif choice == "9":
-        pass
+        library.save_data()
+        print('1')
     elif choice == "10":
         library.most_borrow_book()
-
-
 
 
 
