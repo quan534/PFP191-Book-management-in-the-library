@@ -242,7 +242,7 @@ def menu():
     print("6. Mượn sách")
     print("7. Trả sách")
     print("8. Nhập dữ liệu từ file")
-    print("9. Lưu dữ liệu ra file")
+    print("9. Xem danh sách mượn")
     print("10. Tìm sách được mượn nhiều nhất")
     print() 
 
