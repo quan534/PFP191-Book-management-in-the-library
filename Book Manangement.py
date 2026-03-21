@@ -9,6 +9,73 @@ class Book:
         self.category = category         # Thể loại sách
         self.borrow_count = borrow_count # Số lượng sách đang được mượn (mặc định là 0)
 
+
+    # -------- name --------
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        if type(value) != str or value.strip() == "":
+            raise ValueError("Book name must be a non-empty string.")
+        self._name = value.strip()
+
+    # -------- id --------
+    @property
+    def id(self):
+        return self._id
+
+    @id.setter
+    def id(self, value):
+        if type(value) != str or value.strip() == "":
+            raise ValueError("Book ID must be a non-empty string.")
+        self._id = value.strip()
+
+    # -------- author --------
+    @property
+    def author(self):
+        return self._author
+
+    @author.setter
+    def author(self, value):
+        if type(value) != str or value.strip() == "":
+            raise ValueError("Author name must be a non-empty string.")
+        self._author = value.strip()
+
+    # -------- quantity --------
+    @property
+    def quantity(self):
+        return self._quantity
+
+    @quantity.setter
+    def quantity(self, value):
+        if type(value) != int or value < 0:
+            raise ValueError("Quantity must be a non-negative integer.")
+        self._quantity = value
+
+    # -------- category --------
+    @property
+    def category(self):
+        return self._category
+
+    @category.setter
+    def category(self, value):
+        if type(value) != str or value.strip() == "":
+            raise ValueError("Category must be a non-empty string.")
+        self._category = value.strip()
+
+    # -------- borrow_count --------
+    @property
+    def borrow_count(self):
+        return self._borrow_count
+
+    @borrow_count.setter
+    def borrow_count(self, value):
+        if type(value) != int or value < 0:
+            raise ValueError("Borrow count must be a non-negative integer.")
+        self._borrow_count = value
+
     # Phương thức xử lý logic khi một cuốn sách được mượn
     def borrow(self):
         # Nếu số lượng trong kho không còn, báo lỗi
